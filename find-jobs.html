@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Find Jobs – CV Adult & Career Education</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+ 
+    /* ── PAGE-SPECIFIC STYLES ── */
+    .page-wrap { padding-top: 80px; }
+ 
+    /* Navbar bg on scroll */
+    .navbar-inner.scrolled { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+ 
+    /* HERO */
+    .hero {
+      position: relative; height: 400px; overflow: hidden;
+      background: #f5c6cb; display: flex; align-items: flex-end;
+    }
+    .hero-img {
+      position: absolute; right: 0; top: 0;
+      height: 100%; width: 62%;
+      object-fit: cover; object-position: top center;
+    }
+    .hero::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, #f5c6cb 30%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-copy { position: relative; z-index: 2; padding: 0 56px 52px; }
+    .hero-copy h1 {
+      font-size: clamp(32px, 4.5vw, 50px); font-weight: 700;
+      color: #1e2d3d; margin: 0 0 12px;
+    }
+    .hero-copy p {
+      font-size: 15px; color: #1e2d3d; opacity: .8;
+      max-width: 250px; line-height: 1.55; margin: 0;
+    }
+ 
+    /* FILTERS */
+    .filters-bar {
+      background: #fff; border-bottom: 1px solid #dce4ec;
+      padding: 20px 40px 16px;
+    }
+    .job-search-wrap {
+      display: flex; align-items: center; gap: 10px;
+      border: 1.5px solid #dce4ec; border-radius: 40px;
+      padding: 10px 20px; max-width: 820px; margin-bottom: 14px;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .job-search-wrap:focus-within {
+      border-color: #3a7ca5; box-shadow: 0 0 0 3px rgba(58,124,165,.12);
+    }
+    .job-search-wrap input {
+      flex: 1; border: none; outline: none;
+      font-family: "Poppins", sans-serif; font-size: 13.5px;
+      color: #1e2d3d; background: transparent;
+    }
+    .job-search-wrap input::placeholder { color: #8a98a8; }
+    .job-search-wrap i { color: #8a98a8; font-size: 14px; }
+ 
+    .filter-dropdowns { display: flex; gap: 10px; }
+    .filter-btn {
+      display: flex; align-items: center; gap: 6px;
+      border: 1.5px solid #dce4ec; border-radius: 24px; padding: 8px 16px;
+      font-family: "Poppins", sans-serif; font-size: 13px; font-weight: 500;
+      color: #1e2d3d; background: #fff; cursor: pointer;
+      transition: border-color .2s, background .2s;
+    }
+    .filter-btn:hover { border-color: #3a7ca5; background: #e8f2f9; }
+    .filter-btn i { color: #8a98a8; font-size: 11px; }
+ 
+    /* TABLE */
+    .table-section { max-width: 960px; margin: 36px auto 60px; padding: 0 24px; }
+ 
+    table {
+      width: 100%; border-collapse: collapse;
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 2px 16px rgba(30,45,61,.08); background: #fff;
+    }
+    thead tr { background: #1e2d3d; color: #fff; }
+    thead th {
+      padding: 14px 16px; text-align: left;
+      font-size: 13px; font-weight: 500; letter-spacing: .04em; white-space: nowrap;
+    }
+    tbody tr { border-bottom: 1px solid #dce4ec; transition: background .15s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #e8f2f9; }
+    tbody td { padding: 16px; font-size: 14px; vertical-align: middle; }
+ 
+    .td-title { font-weight: 600; line-height: 1.35; }
+    .td-company { color: #6b7a8d; font-size: 13px; }
+    .td-wage { font-weight: 500; }
+    .td-date { color: #6b7a8d; font-size: 13px; white-space: nowrap; }
+ 
+    .badge {
+      display: inline-block; padding: 4px 12px; border-radius: 20px;
+      font-size: 12px; font-weight: 600; white-space: nowrap;
+    }
+    .badge-full { background: #d4ecd4; color: #2e7d32; }
+    .badge-part { background: #fff3cd; color: #7a5c00; }
+    .badge-temp { background: #fde0d0; color: #9b4218; }
+ 
+    .btn-apply {
+      display: inline-block; padding: 7px 18px;
+      background: #3a7ca5; color: #fff; border: none; border-radius: 20px;
+      font-family: "Poppins", sans-serif; font-size: 13px; font-weight: 600;
+      cursor: pointer; text-decoration: none; white-space: nowrap;
+      transition: background .2s, transform .1s;
+    }
+    .btn-apply:hover { background: #2e6a8e; transform: translateY(-1px); }
+    .btn-apply:active { transform: translateY(0); }
+  </style>
+</head>
+<body>
+ 
+<!-- NAVBAR -->
+<nav id="mynavbar">
+  <div class="navbar-inner" id="navbarInner">
+    <div class="nav-left">
+      <a href="#">Find Jobs</a>
+      <a href="#">Find Employers</a>
+      <a href="#">Resources</a>
+    </div>
+    <div class="nav-center">
+      <!-- Replace with your actual logo path -->
+      <a href="#"><img src="logo.png" alt="CV Adult & Career Education"></a>
+    </div>
+    <div class="nav-right">
+      <a href="#">About</a>
+      <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+</nav>
+ 
+<div class="page-wrap">
+ 
+  <!-- HERO -->
+  <section class="hero">
+    <!-- Replace src with your actual photo -->
+    <img class="hero-img" src="hero-nurse.jpg" alt="Healthcare professional">
+    <div class="hero-copy">
+      <h1>Find Jobs</h1>
+      <p>Explore allied health positions around the San Francisco Bay Area</p>
+    </div>
+  </section>
+ 
+  <!-- FILTERS -->
+  <div class="filters-bar">
+    <div class="job-search-wrap">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search for job title or keyword…">
+    </div>
+    <div class="filter-dropdowns">
+      <button class="filter-btn">City <i class="fas fa-chevron-down"></i></button>
+      <button class="filter-btn">Company <i class="fas fa-chevron-down"></i></button>
+      <button class="filter-btn">Job Type <i class="fas fa-chevron-down"></i></button>
+    </div>
+  </div>
+ 
+  <!-- JOB TABLE -->
+  <section class="table-section">
+    <table>
+      <thead>
+        <tr>
+          <th>Job Title</th>
+          <th>Company</th>
+          <th>Specialty</th>
+          <th>City</th>
+          <th>Job Type</th>
+          <th>Hourly Wage</th>
+          <th>Posted</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-title">Medical Assistant</td>
+          <td class="td-company">Kaiser Permanente</td>
+          <td>Cardiology</td>
+          <td>Oakland</td>
+          <td><span class="badge badge-full">Full Time</span></td>
+          <td class="td-wage">$32.00</td>
+          <td class="td-date">March 2, 2026</td>
+          <td><a href="#" class="btn-apply">Apply</a></td>
+        </tr>
+        <tr>
+          <td class="td-title">Medical Assistant II</td>
+          <td class="td-company">Sutter Health</td>
+          <td>Dermatology</td>
+          <td>Dublin</td>
+          <td><span class="badge badge-part">Part Time</span></td>
+          <td class="td-wage">$34.00</td>
+          <td class="td-date">March 1, 2026</td>
+          <td><a href="#" class="btn-apply">Apply</a></td>
+        </tr>
+        <tr>
+          <td class="td-title">Medical Assistant</td>
+          <td class="td-company">Bass Medical Group</td>
+          <td>Cardiology</td>
+          <td>Walnut Creek</td>
+          <td><span class="badge badge-temp">Temporary</span></td>
+          <td class="td-wage">$32.00</td>
+          <td class="td-date">February 23, 2026</td>
+          <td><a href="#" class="btn-apply">Apply</a></td>
+        </tr>
+        <tr>
+          <td class="td-title">Patient Advocate</td>
+          <td class="td-company">Asian Health Services</td>
+          <td>Community Health</td>
+          <td>Oakland</td>
+          <td><span class="badge badge-full">Full Time</span></td>
+          <td class="td-wage">$28.00</td>
+          <td class="td-date">February 15, 2026</td>
+          <td><a href="#" class="btn-apply">Apply</a></td>
+        </tr>
+        <tr>
+          <td class="td-title">Medical Assistant</td>
+          <td class="td-company">UCSF Health</td>
+          <td>OB/GYN</td>
+          <td>San Francisco</td>
+          <td><span class="badge badge-temp">Temporary</span></td>
+          <td class="td-wage">$32.00</td>
+          <td class="td-date">February 14, 2026</td>
+          <td><a href="#" class="btn-apply">Apply</a></td>
+        </tr>
+        <tr>
+          <td class="td-title">Front Desk Receptionist</td>
+          <td class="td-company">Concentra</td>
+          <td>Urgent Care</td>
+          <td>Tracy</td>
+          <td><span class="badge badge-full">Full Time</span></td>
+          <td class="td-wage">$22.00</td>
+          <td class="td-date">February 7, 2026</td>
+          <td><a href="#" class="btn-apply">Apply</a></td>
+        </tr>
+        <tr>
+          <td class="td-title">Medical Assistant</td>
+          <td class="td-company">Concentra</td>
+          <td>Urgent Care</td>
+          <td>Tracy</td>
+          <td><span class="badge badge-part">Part Time</span></td>
+          <td class="td-wage">$22.00</td>
+          <td class="td-date">February 7, 2026</td>
+          <td><a href="#" class="btn-apply">Apply</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+ 
+</div><!-- end page-wrap -->
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col-logo">
+      <!-- Replace with your actual logo path -->
+      <img src="logo-white.png" alt="CV Adult & Career Education">
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col-copy">
+      © 2026 Castro Valley Adult &amp; Career Education.<br>
+      All Rights Reserved.<br><br>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Service</a> |
+      <a href="#">Accessibility</a>
+    </div>
+ 
+    <div class="footer-col-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Find Jobs</a></li>
+        <li><a href="#">Find Employers</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-right-group">
+      <div class="footer-col-contact">
+        <h4>Contact</h4>
+        <p>510-886-1000</p>
+        <p><a href="mailto:cvaceinfo@cv.k12.ca.us">cvaceinfo@cv.k12.ca.us</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+ 
+<script>
+  const navbarInner = document.getElementById('navbarInner');
+  window.addEventListener('scroll', () => {
+    navbarInner.classList.toggle('scrolled', window.scrollY > 10);
+  });
+</script>
+ 
+</body>
+</html>

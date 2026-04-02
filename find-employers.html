@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Find Employers</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; }
+ 
+    body, h1, h2, h3, h4, h5, h6 { font-family: "Poppins", sans-serif; }
+ 
+    body {
+      margin: 0;
+      padding: 0;
+    }
+ 
+    /* ── NAVBAR ── */
+    #mynavbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+    }
+ 
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: white;
+      padding: 12px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+ 
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 33%;
+    }
+ 
+    .nav-right {
+      justify-content: flex-end;
+    }
+ 
+    .nav-center {
+      width: 33%;
+      display: flex;
+      justify-content: center;
+    }
+ 
+    .nav-center img {
+      height: 55px;
+    }
+ 
+    .nav-left a, .nav-right a {
+      text-decoration: none;
+      color: #222;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 6px 10px;
+      border-radius: 4px;
+    }
+ 
+    .nav-left a:hover, .nav-right a:hover {
+      background: #f0f0f0;
+    }
+ 
+    .search-box {
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+ 
+    .search-box input {
+      border: none;
+      padding: 7px 12px;
+      outline: none;
+      width: 150px;
+      font-family: "Poppins", sans-serif;
+      font-size: 0.85rem;
+    }
+ 
+    .search-box button {
+      border: none;
+      background: none;
+      padding: 7px 12px;
+      cursor: pointer;
+      color: #555;
+      background-color: white;
+    }
+ 
+    /* ── HERO ── */
+    .hero {
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+ 
+    .hero img.hero-bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+ 
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+    }
+ 
+    .hero-content p {
+      margin: 0 0 4px;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+ 
+    .hero-content h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+ 
+    /* ── TICKER BAND ── */
+    .ticker-band {
+      background: #1a3c5e;
+      color: #fff;
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+ 
+    .ticker-inner {
+      display: inline-flex;
+      gap: 32px;
+    }
+ 
+    .ticker-inner span {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+ 
+    .ticker-inner span::before {
+      content: "    •";
+      color: #7eb8c9;
+    }
+
+ 
+    /* ── EMPLOYER DIRECTORY ── */
+    .directory-section {
+      padding: 60px 20px;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: center;
+    }
+ 
+    .directory-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+      overflow: hidden;
+      width: 100%;
+      max-width: 900px;
+    }
+ 
+    .directory-header {
+      background: #1a3c5e;
+      color: #fff;
+      text-align: center;
+      padding: 18px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+ 
+    .employer-list {
+      padding: 8px 0;
+      max-height: 480px;
+      overflow-y: auto;
+    }
+ 
+    .employer-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 24px 28px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+ 
+    .employer-item:last-child { border-bottom: none; }
+ 
+    .employer-logo {
+      flex-shrink: 0;
+      width: 110px;
+      display: flex;
+      align-items: center;
+    }
+ 
+    .employer-logo img {
+      width: 100%;
+      object-fit: contain;
+    }
+ 
+    .employer-info h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #111;
+    }
+ 
+    .employer-info p {
+      margin: 0 0 8px;
+      font-size: 0.82rem;
+      color: #444;
+      line-height: 1.6;
+    }
+ 
+    .employer-info .website {
+      font-size: 0.8rem;
+      color: #1a6f9a;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+    }
+ 
+    .employer-info .website:hover { text-decoration: underline; }
+ 
+    .locations-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 6px;
+    }
+ 
+    .location-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+ 
+    .location-tag {
+      background: #e8f0e9;
+      color: #2a5e3a;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 4px 14px;
+      border-radius: 20px;
+    }
+ 
+    /* ── FEATURED COMPANIES ── */
+    .featured-section {
+      background: #e8e6d9;
+      padding: 60px 20px;
+      text-align: center;
+    }
+ 
+    .featured-section h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #222;
+      margin: 0 0 36px;
+    }
+ 
+    .featured-carousel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+ 
+    .carousel-btn {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #333;
+      flex-shrink: 0;
+      transition: box-shadow 0.2s;
+    }
+ 
+    .carousel-btn:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+ 
+    .featured-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px 36px;
+      max-width: 380px;
+      width: 100%;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+ 
+    .featured-card img {
+      height: 48px;
+      object-fit: contain;
+      margin-bottom: 16px;
+    }
+ 
+    .featured-card p {
+      font-size: 0.83rem;
+      color: #444;
+      line-height: 1.7;
+      margin: 0 0 14px;
+    }
+ 
+    .featured-card .website {
+      font-size: 0.82rem;
+      color: #1a6f9a;
+      text-decoration: none;
+    }
+ 
+    .featured-card .website:hover { text-decoration: underline; }
+ 
+    /* ── FOOTER ── */
+    footer {
+      background: #6aabaa;
+      color: #fff;
+      padding: 50px 60px 30px;
+    }
+ 
+    .footer-inner {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+ 
+    .footer-col-logo img {
+      height: 60px;
+      margin-bottom: 16px;
+    }
+ 
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+ 
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: #183346;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+ 
+    .footer-social a:hover { opacity: 0.85; }
+ 
+    .footer-col-copy {
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+ 
+    .footer-col-copy a {
+      color: #fff;
+      text-decoration: none;
+    }
+ 
+    .footer-col-copy a:hover { text-decoration: underline; }
+ 
+    .footer-col-links h4, .footer-col-contact h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+ 
+    .footer-col-links ul, .footer-col-contact p {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+ 
+    .footer-col-links ul li, .footer-col-contact {
+      margin-bottom: 0
+    }
+ 
+    .footer-col-links ul li a, .footer-col-contact a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.88rem;
+    }
+ 
+    .footer-col-links ul li a:hover { text-decoration: underline; }
+ 
+    .footer-col-contact {
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+ 
+    .footer-col-contact a:hover { text-decoration: underline; }
+
+    .footer-right-group {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    } 
+ 
+    .footer-cart {
+      font-size: 1.3rem;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+ 
+<!-- ── NAVBAR ── -->
+<nav id="mynavbar">
+  <div class="navbar-inner">
+    <div class="nav-left">
+      <a href="#">Find Jobs</a>
+      <a href="#">Find Employers</a>
+      <a href="#">Resources</a>
+    </div>
+    <div class="nav-center">
+      <img src="images/cvace-logo-removebg-preview.png" alt="Castro Valley Adult & Career Education"/>
+    </div>
+    <div class="nav-right">
+      <a href="#">About</a>
+      <div class="search-box">
+        <input type="text" placeholder="Search..." />
+        <button><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+</nav>
+ 
+<!-- ── HERO ── -->
+<section class="hero">
+  <img class="hero-bg" src="images/medical-facility.jpg" alt="Medical Facility">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p>San Francisco Bay Area</p>
+    <h1>Healthcare Companies</h1>
+  </div>
+</section>
+ 
+<!-- ── TICKER ── -->
+<div class="ticker-band">
+  <div class="ticker-inner">
+    <span>EMPLOYERS</span><span>EMPLOYERS</span><span>EMPLOYERS</span>
+    <span>EMPLOYERS</span><span>EMPLOYERS</span><span>EMPLOYERS</span>
+    <span>EMPLOYERS</span><span>EMPLOYERS</span><span>EMPLOYERS</span>
+    <span>EMPLOYERS</span><span>EMPLOYERS</span><span>EMPLOYERS</span>
+    <!-- duplicate for seamless loop -->
+    <span>EMPLOYERS</span><span>EMPLOYERS</span><span>EMPLOYERS</span>
+    <span>EMPLOYERS</span><span>EMPLOYERS</span><span>EMPLOYERS</span>
+    <span>EMPLOYERS</span><span>EMPLOYERS</span><span>EMPLOYERS</span>
+    <span>EMPLOYERS</span><span>EMPLOYERS</span><span>EMPLOYERS</span>
+  </div>
+</div>
+ 
+<!-- ── EMPLOYER DIRECTORY ── -->
+<section class="directory-section">
+  <div class="directory-card">
+    <div class="directory-header">Employer Directory</div>
+    <div class="employer-list">
+ 
+      <!-- Kaiser Permanente -->
+      <div class="employer-item">
+        <div class="employer-logo">
+          <img src="images/kaiser-permanente.svg"
+               alt="Kaiser Permanente" />
+        </div>
+        <div class="employer-info">
+          <h3>Kaiser Permanente</h3>
+          <p>Kaiser Permanente is an integrated healthcare organization that provides comprehensive medical services, combining insurance coverage with hospital and physician care.</p>
+          <a class="website" href="https://www.kaiserpermanente.org" target="_blank">www.kaiserpermanente.org</a>
+          <div class="locations-label">Locations:</div>
+          <div class="location-tags">
+            <span class="location-tag">Alameda</span>
+            <span class="location-tag">Berkeley</span>
+            <span class="location-tag">Oakland</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Sutter Health -->
+      <div class="employer-item">
+        <div class="employer-logo">
+          <img src="images/Sutter-Health-Logo.png"
+               alt="Sutter Health" />
+        </div>
+        <div class="employer-info">
+          <h3>Sutter Health</h3>
+          <p>Sutter Health is a nonprofit healthcare network that provides comprehensive medical services across Northern California, offering coordinated care through hospitals, physician groups, and outpatient facilities.</p>
+          <a class="website" href="https://www.sutterhealth.org" target="_blank">www.sutterhealth.org</a>
+          <div class="locations-label">Locations:</div>
+          <div class="location-tags">
+            <span class="location-tag">Alameda</span>
+            <span class="location-tag">Berkeley</span>
+            <span class="location-tag">Oakland</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Stanford Medicine Partners -->
+      <div class="employer-item">
+        <div class="employer-logo">
+          <img src="images/SMP-Logo.png"
+               alt="Stanford Medicine Partners" />
+        </div>
+        <div class="employer-info">
+          <h3>Stanford Medicine Partners</h3>
+          <p>Stanford Medicine Partners is a physician-led network that connects community doctors with the expertise and resources of Stanford Medicine. It focuses on delivering coordinated, high-quality care with an emphasis on innovation, patient outcomes, and collaboration.</p>
+          <a class="website" href="https://stanfordmedicinepartners.org/" target="_blank">www.stanfordmedicinepatners.org</a>
+          <div class="locations-label">Locations:</div>
+          <div class="location-tags">
+            <span class="location-tag">Oakland</span>
+            <span class="location-tag">Castro Valley</span>
+            <span class="location-tag">San Ramon</span>
+            <span class="location-tag">Walnut Creek</span>
+            <span class="location-tag">Livermore</span>
+            <span class="location-tag">Hayward</span>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+ 
+<!-- ── FEATURED COMPANIES ── -->
+<section class="featured-section">
+  <h2>Featured Companies</h2>
+  <div class="featured-carousel">
+    <button class="carousel-btn" aria-label="Previous">&#8592;</button>
+    <div class="featured-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Sutter_Health_logo.svg/320px-Sutter_Health_logo.svg.png"
+           alt="Sutter Health" />
+      <p>Sutter Health is a nonprofit healthcare network that provides comprehensive medical services across Northern California, offering coordinated care through hospitals, physician groups, and outpatient facilities.</p>
+      <a class="website" href="https://www.sutterhealth.org" target="_blank">www.sutterhealth.org</a>
+    </div>
+    <button class="carousel-btn" aria-label="Next">&#8594;</button>
+  </div>
+</section>
+ 
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <!-- Logo + social + copy -->
+    <div class="footer-col-logo">
+      <div style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:8px;">
+        Castro Valley<br>Adult &amp; Career Education
+      </div>
+      <div class="footer-col-copy">
+        © 2025 Castro Valley Adult &amp; Career Education.<br>
+        All Rights Reserved.<br>
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Accessibility</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+ 
+    <!-- Spacer -->
+    <div style="flex:1;min-width:60px;"></div>
+ 
+    <!-- Quick Links -->
+    <div class="footer-col-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Find Jobs</a></li>
+        <li><a href="#">Find Employers</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div>
+ 
+    <!-- Contact -->
+    <div class="footer-col-contact">
+      <h4>&nbsp;</h4>
+      <p>510-555-1500</p>
+      <p><a href="mailto:info@cvl5.us">info@cvl5.us</a></p>
+      <div class="footer-cart" style="margin-top:16px;">🛒</div>
+    </div>
+  </div>
+</footer>
+ 
+</body>
+</html>

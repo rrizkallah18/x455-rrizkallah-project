@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resources</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap">
+  <style>
+
+    /* ── RESOURCES PAGE SPECIFIC ── */
+ 
+    /* Hero Banner */
+    .resources-hero {
+    margin-top: 0px;
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 80px;
+    box-sizing: border-box;
+    }
+ 
+    .resources-hero .hero-bg-img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    }
+ 
+    .resources-hero-text {
+    text-align: right;
+    position: relative;
+    z-index: 1;
+    }
+
+    .resources-hero-text .pre {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #1a2e40;
+    margin-bottom: 4px;
+    }
+
+    .resources-hero-text h1 {
+    font-size: 5rem;
+    font-weight: 800;
+    color: #1a2e40;
+    line-height: 1.1;
+    margin: 0;
+    }
+ 
+    /* BLUE WRAPPED RESOURCES BAR */
+    .ticker-wrap {
+      background: #6aabaa;
+      overflow: hidden;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255,255,255,0.3);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+    }
+ 
+    .ticker-inner {
+      display: flex;
+      gap: 30px;
+      white-space: nowrap;
+    }
+ 
+    .ticker-inner span {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: #fff;
+      text-transform: uppercase;
+    }
+ 
+    /* Main content */
+    .resources-main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 70px 40px;
+    }
+ 
+    /* Resource section - alternating layout */
+    .resource-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 90px;
+    }
+ 
+    .resource-section.reverse {
+      direction: rtl;
+    }
+ 
+    .resource-section.reverse > * {
+      direction: ltr;
+    }
+ 
+    .resource-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+ 
+    .resource-img-placeholder {
+      width: 100%;
+      height: 320px;
+      background: #e8f0ef;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6aabaa;
+      font-size: 3rem;
+    }
+ 
+    .resource-content h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #1a2e40;
+      margin-bottom: 16px;
+      margin-top: 0;
+    }
+ 
+    .resource-content p {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+ 
+    .resource-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #1a2e40;
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+ 
+    .resource-btn:hover {
+      background: #6aabaa;
+      color: #fff;
+    }
+ 
+    /* Divider */
+    .resource-divider {
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      margin-bottom: 90px;
+    }
+  </style>
+</head>
+  <body>
+ 
+    <!-- ── NAVBAR ── -->
+        <div id="myNavbar">
+          <div class="navbar-inner">
+        
+            <!-- Left links -->
+            <div class="nav-left">
+              <a href="#jobs">Find Jobs</a>
+              <a href="#employers">Find Employers</a>
+              <a href="resources.html">Resources</a>
+            </div>
+        
+            <!-- Centered logo -->
+            <div class="nav-center">
+              <a href="#home">
+                <img src="images/cvace-logo-removebg-preview.png" alt="Castro Valley Adult & Career Education">
+              </a>
+            </div>
+        
+            <!-- Right links + search -->
+            <div class="nav-right">
+              <a href="#about">About</a>
+              <div class="search-box">
+                <input type="text" placeholder="Search...">
+                <button><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+
+
+<!-- ── HERO BANNER ── -->
+<div class="resources-hero">
+  <img class="hero-bg-img" 
+    src="images/resource-books.jpg" alt="Books">
+  <div class="resources-hero-text">
+    <p class="pre">Job Search &amp; Application</p>
+    <h1>Resources</h1>
+  </div>
+</div>
+ 
+<!-- ── TICKER ── -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span>Resources</span>
+    <span>&bullet;</span>
+    <span>Resources</span>
+    <span>&bullet;</span>
+    <span>Resources</span>
+    <span>&bullet;</span>
+    <span>Resources</span>
+    <span>&bullet;</span>
+    <span>Resources</span>
+    <span>&bullet;</span>
+    <span>Resources</span>
+    <span>&bullet;</span>
+    <span>Resources</span>
+    <span>&bullet;</span>
+    <span>Resources</span>
+    <span>&bullet;</span>
+    <span>Resources</span>
+    <span>&bullet;</span>
+    <span>Resources</span>
+    <span>&bullet;</span>
+    <span>Resources</span>
+    <span>&bullet;</span>
+    <span>Resources</span>
+    <span>&bullet;</span>
+  </div>
+</div>
+ 
+<!-- ── MAIN CONTENT ── -->
+<main class="resources-main">
+ 
+  <!-- Resumes and Cover Letters -->
+  <section class="resource-section">
+    <div class="resource-content">
+      <h2>Resumes & Cover Letters</h2>
+      <p>A resume is a professional document that summarizes your education, work experience, skills, certifications, and accomplishments, giving employers a clear snapshot of your qualifications and career background. A cover letter is a personalized introduction that accompanies your resume, allowing you to explain your interest in a specific position, highlight key achievements, and demonstrate how your skills align with the employer's needs. Together, these documents present your professional story, showcase your value, and create a strong impression with hiring managers.</p>
+      <a href="#" class="resource-btn">Resume Help</a>
+    </div>
+    <div class="resource-img-placeholder">
+      <img src="images/resume.jpg" alt="Resumes and Cover Letters" class="resource-img">
+    </div>
+  </section>
+ 
+  <hr class="resource-divider">
+ 
+  <!-- Job Applications -->
+  <section class="resource-section reverse">
+    <div class="resource-content">
+      <h2>Job Applications</h2>
+      <p>A job application is a formal request for employment that provides employers with detailed information about your work history, education, skills, and references. Unlike a resume, which allows for a customized presentation, a job application typically follows a standardized format required by the employer, ensuring consistent information from all candidates. Completing a job application accurately and thoroughly demonstrates professionalism, attention to detail, and helps employers assess your qualifications and suitability for the role.</p>
+      <a href="#" class="resource-btn">Job Application Help</a>
+    </div>
+    <div class="resource-img-placeholder">
+      <img src="images/applications.jpg" alt="Job Applications" class="resource-img">
+    </div>
+  </section>
+ 
+  <hr class="resource-divider">
+ 
+  <!-- Job Interviews -->
+  <section class="resource-section">
+    <div class="resource-content">
+      <h2>Job Interviews</h2>
+      <p>A job interview is a structured conversation between a candidate and an employer designed to assess qualifications, experience, skills, and overall fit for a position. It provides an opportunity for you to expand on your resume and application, demonstrate your communication abilities, and showcase your professionalism and enthusiasm for the role. At the same time, interviews allow you to learn more about the organization, its expectations, and workplace culture, helping both you and the employer determine if the opportunity is the right match.</p>
+      <a href="#" class="resource-btn">Job Interview Help</a>
+    </div>
+    <div class="resource-img-placeholder">
+      <img src="images/interview.jpg" alt="Job Interviews" class="resource-img">
+    </div>
+  </section>
+</main> 
+
+<!-- ── FOOTER ── -->
+<footer class="green-footer"; id="contact">
+  <div class="footer-inner">
+ 
+    <!-- Logo + social -->
+    <div class="footer-col-logo">
+      <img src="images/cvace-logo-removebg-preview.png" alt="Castro Valley Adult & Career Education">
+      <div class="footer-social">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+      </div>
+    </div>
+ 
+    <!-- Copyright + legal -->
+    <div class="footer-col-copy">
+      <p>© 2026 Castro Valley Adult & Career Education.<br>All Rights Reserved.</p>
+      <br>
+      <p>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms of Service</a> |
+        <a href="#">Accessibility</a>
+      </p>
+    </div>
+
+    <div class="footer-right-group"></div>
+ 
+    <!-- Quick links -->
+    <div class="footer-col-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#jobs">Find Jobs</a></li>
+        <li><a href="#employers">Find Employers</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+ 
+    <!-- Contact info -->
+    <div class="footer-col-contact">
+      <h4>Contact</h4>
+        <p>510-886-1000</p>
+        <p><a href="mailto:info@cv.k12.ca.us">info@cv.k12.ca.us</a></p>
+      <div class="footer-cart">
+        <i class="fa fa-shopping-cart"></i>
+      </div>
+    </div>
+ 
+  </div>
+</footer>
+
+</body>
+</html>
+ 

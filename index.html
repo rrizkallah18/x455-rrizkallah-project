@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Allied Health Job Boards</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+ 
+    .hero img.hero-bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+ 
+    .hero-text {
+      position: absolute;
+      top: 35%;
+      left: 48px;
+      transform: translateY(-40%);
+      color: #183346;
+    }
+ 
+    .hero-text .title {
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #1a2e40;
+      text-shadow: none;
+    }
+ 
+    .hero-text .cta {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 14px 28px;
+      background: rgba(255,255,255,0.85);
+      color: #1a2e40;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+ 
+    .hero-text .cta:hover {
+      background: #fff;
+    }
+ 
+    /* ── FOOTER ── */
+    footer {
+      background: #6aabaa;
+      color: #fff;
+      padding: 50px 60px 30px;
+    }
+ 
+    .footer-inner {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+ 
+    .footer-col-logo img {
+      height: 60px;
+      margin-bottom: 16px;
+    }
+ 
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+ 
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: #183346;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+ 
+    .footer-social a:hover { opacity: 0.85; }
+ 
+    .footer-col-copy {
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+ 
+    .footer-col-copy a {
+      color: #fff;
+      text-decoration: none;
+    }
+ 
+    .footer-col-copy a:hover { text-decoration: underline; }
+ 
+    .footer-col-links h4, .footer-col-contact h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+ 
+    .footer-col-links ul, .footer-col-contact p {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+ 
+    .footer-col-links ul li, .footer-col-contact {
+      margin-bottom: 0
+    }
+ 
+    .footer-col-links ul li a, .footer-col-contact a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.88rem;
+    }
+ 
+    .footer-col-links ul li a:hover { text-decoration: underline; }
+ 
+    .footer-col-contact {
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+ 
+    .footer-col-contact a:hover { text-decoration: underline; }
+
+    .footer-right-group {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    } 
+ 
+    .footer-cart {
+      font-size: 1.3rem;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+ 
+<!-- ── NAVBAR ── -->
+<div id="myNavbar">
+  <div class="navbar-inner">
+ 
+    <!-- Left links -->
+    <div class="nav-left">
+      <a href="#jobs.html">Find Jobs</a>
+      <a href="#employers.html">Find Employers</a>
+      <a href="resources.html">Resources</a>
+    </div>
+ 
+    <!-- Centered logo -->
+    <div class="nav-center">
+      <a href="#index.html">
+        <img src="images/cvace-logo-removebg-preview.png" alt="Castro Valley Adult & Career Education">
+      </a>
+    </div>
+ 
+    <!-- Right links + search -->
+    <div class="nav-right">
+      <a href="#about.html">About</a>
+      <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <button><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+<div>
+ 
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <img class="hero-bg" src="images/pexels-jessica-bryant-592135-1370704 (1).jpg" alt="San Francisco Painted Ladies">
+  <div class="hero-text">
+    <p class="subtitle">San Francisco Bay Area</p>
+    <h1 class="title">Allied Health<br>Job Boards</h1>
+    <a href="#about" class="cta">Explore Jobs</a>
+  </div>
+</section>
+ 
+<!-- ── FOOTER ── -->
+<footer id="contact">
+  <div class="footer-inner">
+ 
+    <!-- Logo + social -->
+    <div class="footer-col-logo">
+      <img src="images/cvace-logo-removebg-preview.png" alt="Castro Valley Adult & Career Education">
+      <div class="footer-social">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+      </div>
+    </div>
+ 
+    <!-- Copyright + legal -->
+    <div class="footer-col-copy">
+      <p>© 2026 Castro Valley Adult & Career Education.<br>All Rights Reserved.</p>
+      <br>
+      <p>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms of Service</a> |
+        <a href="#">Accessibility</a>
+      </p>
+    </div>
+
+    <div class="footer-right-group"></div>
+ 
+    <!-- Quick links -->
+    <div class="footer-col-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#jobs">Find Jobs</a></li>
+        <li><a href="#employers">Find Employers</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+ 
+    <!-- Contact info -->
+    <div class="footer-col-contact">
+      <h4>Contact</h4>
+        <p>510-886-1000</p>
+        <p><a href="mailto:info@cv.k12.ca.us">info@cv.k12.ca.us</a></p>
+      <div class="footer-cart">
+        <i class="fa fa-shopping-cart"></i>
+      </div>
+    </div>
+ 
+  </div>
+</footer>
+ 
+</body>
+</html>

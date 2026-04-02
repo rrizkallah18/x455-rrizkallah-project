@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Allied Health Job Boards</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+<style>
+
+/* ── ABOUT-HERO ── */
+
+hero.section {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.hero-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    }
+
+.about-section {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  padding: 40px;
+}
+
+.about-text {
+  flex: 1;  
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  min-width: 100%;
+}
+
+.slide iframe {
+  width: 100%;
+  height: 280px;
+  display: block;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.prev { left: 8px; }
+.next { right: 8px; }
+
+</style>
+<head>
+<body>
+ 
+<!-- ── NAVBAR ── -->
+    <div id="myNavbar">
+        <div class="navbar-inner">
+        
+         <!-- Left links -->
+        <div class="nav-left">
+            <a href="#jobs">Find Jobs</a>
+            <a href="#employers">Find Employers</a>
+            <a href="resources.html">Resources</a>
+        </div>
+        
+        <!-- Centered logo -->
+        <div class="nav-center">
+            <a href="#home">
+            <img src="images/cvace-logo-removebg-preview.png" alt="Castro Valley Adult & Career Education">
+            </a>
+        </div>
+        
+        <!-- Right links + search -->
+        <div class="nav-right">
+            <a href="#about">About</a>
+            <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <button><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+
+<!-- ── HERO ── -->
+<section class="about-hero" id="home">
+  <img class="about-hero" src="images/cvace.jpg" alt="Castro Valley Adult & Career Education">
+</section>
+
+<!-- MAIN CONTENT -->
+
+ <!-- About CVACE - Left -->
+   <section class="about-section">
+    <div class="about-text">
+      <h2>About CVACE</h2>
+      <p>Castro Valley Adult & Career Education (CVACE) offers a robust Medical Academy that prepares adults for careers in the healthcare field through a variety of focused training programs. Our Medical Academy includes hands-on and hybrid pathways such as the Clinical Medical Assistant program, where students learn essential clinical skills—from taking vital signs and drawing blood to using electronic health records—and prepare for state or national certification exams with the possibility of an externship for real-world experience.</p>
+      <a href="#">About CVACE</a>
+    </div>
+
+  <!-- Right Carousel with the 2 videos-->
+    <div class="about-carousel">
+        <div class="carousel">
+            <div class="carousel-track">
+
+    <div class="slide">
+      <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" 
+        frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="slide">
+      <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" 
+        frameborder="0" allowfullscreen></iframe>
+    </div>
+
+  </div>
+
+  <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+  <button class="next" onclick="moveSlide(1)">&#10095;</button>
+</div>
+
+<section>
+
+<script>
+    let current = 0;
+    const total = 2; // number of slides
+
+    function moveSlide(direction) {
+    current = (current + direction + total) % total;
+    document.querySelector('.carousel-track').style.transform 
+        = `translateX(-${current * 100}%)`;
+}
+</script>
+<body>
+<html>
