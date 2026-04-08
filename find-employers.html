@@ -40,25 +40,26 @@
  
     .hero-content {
       position: absolute;
-      bottom: 60px;
-      left: 60px;
+      top: 50%;
+      left: 56px;
       z-index: 2;
       color: #fff;
+      transform: translateY(-50%);
     }
  
     .hero-content p {
       margin: 0 0 4px;
-      font-size: 1rem;
-      font-weight: 400;
+      font-size: 1.5rem;
+      font-weight: 300;
       letter-spacing: 0.08em;
-      text-transform: uppercase;
       opacity: 0.85;
     }
  
     .hero-content h1 {
-      margin: 0;
-      font-size: 3rem;
+      font-size: clamp(60px, 4.5vw, 85px);
       font-weight: 700;
+      color: #fff;
+      margin: 0 0 12px;
       line-height: 1.2;
       text-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
@@ -315,7 +316,7 @@
  
   <!-- ── HERO ── -->
   <section class="hero">
-    <img class="hero-bg" src="images/medical-facility.jpg" alt="Medical Facility">
+    <img class="hero-bg" src="images/san-francisco-view.jpg" alt="San Francisco">
     <div class="hero-content">
       <p>San Francisco Bay Area</p>
       <h1>Healthcare Companies</h1>
