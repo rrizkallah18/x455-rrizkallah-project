@@ -1,152 +1,492 @@
 <!DOCTYPE html>
-<html>
-    <head>
-    <title>Allied Health Job Boards</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styles.css">
-
-<style>
-
-/* ── ABOUT-HERO ── */
-
-hero.section {
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-}
-
-.hero-section img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About CVACE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles.css">
+ 
+  <style>
+ 
+    /* HERO */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+ 
+    .hero img.hero-bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
 
-.about-section {
-  display: flex;
-  align-items: center;
-  gap: 80px;
-  padding: 40px;
-}
+    /* ABOUT BAR */
+    .ticker-wrap {
+      background: #7a3b3c;
+      overflow: hidden;
+      padding: 10px 0;
+    }
+ 
+    .ticker-inner {
+      display: flex;
+      gap: 30px;
+      white-space: nowrap;
+    }
+ 
+    .ticker-inner span {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: #fff;
+      text-transform: uppercase;
+    }
 
-.about-text {
-  flex: 1;  
-}
+ 
+    /* ABOUT SECTION */
+    .about-section {
+      max-width: 1300px;
+      margin: 60px auto;
+      padding: 0 40px;
+    }
+ 
+    .about-section h4 {
+      margin-top: 0;
+      margin-bottom: 4px;
+      font-size: 15px;
+      font-weight: 300;
+    }
+ 
+    .about-section h1 {
+      margin-top: 0;
+      font-size: 30px;
+      margin-bottom: 30px;
+    }
+ 
+    /* TEXT BLOCK WITH INLINE IMAGE */
+    .about-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+      margin-bottom: 50px;
+    }
+ 
+    .about-block.reverse {
+      direction: rtl;
+    }
+ 
+    .about-block.reverse > * {
+      direction: ltr;
+    }
+ 
+    .about-block p {
+      line-height: 2;
+      font-size: 0.92rem;
+      margin: 0;
+    }
+ 
+    .about-inline-img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+    }
+ 
+    /* THUMBNAIL GALLERY */
+    .gallery-section {
+      background-color: #f7f8f4;
+      max-width: 100%;
+      margin: 0;
+      padding: 40px 40px 200px;
+    }
 
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
-.slide {
-  min-width: 100%;
-}
-
-.slide iframe {
-  width: 100%;
-  height: 280px;
-  display: block;
-}
-
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  padding: 10px 14px;
-  font-size: 18px;
-  cursor: pointer;
-  border-radius: 4px;
-  z-index: 10;
-}
-
-.prev { left: 8px; }
-.next { right: 8px; }
-
-</style>
-<head>
+    .gallery-section .gallery-grid, .gallery-section h2 {
+      max-width: 1300px;
+      margin-left: auto;
+        margin-right: auto;
+    }
+ 
+    .gallery-section h2 {
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+ 
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+ 
+    .gallery-thumb {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      cursor: pointer;
+      aspect-ratio: 4/3;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+      transition: transform 0.2s;
+    }
+ 
+    .gallery-thumb:hover {
+      transform: scale(1.02);
+    }
+ 
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+ 
+    .gallery-thumb:hover img {
+      transform: scale(1.05);
+    }
+ 
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(42, 90, 107, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 14px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+ 
+    .gallery-thumb:hover .gallery-overlay {
+      opacity: 1;
+    }
+ 
+    .gallery-overlay h3 {
+      color: #fff;
+      font-size: 19px;
+      font-weight: 600;
+      margin: 0;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    }
+ 
+ 
+    /* LIGHTBOX */
+    .lightbox-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0,0,0,0.82);
+      align-items: center;
+      justify-content: center;
+    }
+ 
+    .lightbox-backdrop.active {
+      display: flex;
+    }
+ 
+    .lightbox-box {
+      background: #fff;
+      border-radius: 12px;
+      max-width: 800px;
+      width: 90%;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+ 
+    .lightbox-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.5);
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #fff;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+ 
+    .lightbox-close:hover {
+      background: rgba(0,0,0,0.75);
+    }
+ 
+    .lb-img-wrapper {
+      position: relative;
+    }
+ 
+    #lb-img {
+      width: 100%;
+      display: block;
+    }
+ 
+    .lb-overlay-text {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+ 
+    .lb-overlay-text h3 {
+      color: #fff;
+      margin: 0;
+      font-size: 1.3rem;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    }
+ 
+    @media (max-width: 768px) {
+      .about-block { grid-template-columns: 1fr; }
+      .about-block.reverse { direction: ltr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-left, .nav-right { display: none; }
+      .nav-center { width: 100%; }
+    }
+ 
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+ 
+  </style>
+</head>
 <body>
  
-<!-- ── NAVBAR ── -->
-    <div id="myNavbar">
-        <div class="navbar-inner">
-        
-         <!-- Left links -->
-        <div class="nav-left">
-            <a href="#jobs">Find Jobs</a>
-            <a href="#employers">Find Employers</a>
-            <a href="resources.html">Resources</a>
-        </div>
-        
-        <!-- Centered logo -->
-        <div class="nav-center">
-            <a href="#home">
-            <img src="images/cvace-logo-removebg-preview.png" alt="Castro Valley Adult & Career Education">
-            </a>
-        </div>
-        
-        <!-- Right links + search -->
-        <div class="nav-right">
-            <a href="#about">About</a>
-            <div class="search-box">
-            <input type="text" placeholder="Search...">
-            <button><i class="fa fa-search"></i></button>
-            </div>
-        </div>
+<!-- NAVBAR -->
+<div id="myNavbar">
+  <div class="navbar-inner">
+    <div class="nav-left">
+      <a href="find-jobs.html">Find Jobs</a>
+      <a href="find-employers.html">Find Employers</a>
+      <a href="resources.html">Resources</a>
     </div>
-
-<!-- ── HERO ── -->
-<section class="about-hero" id="home">
-  <img class="about-hero" src="images/cvace.jpg" alt="Castro Valley Adult & Career Education">
+    <div class="nav-center">
+      <a href="index.html">
+        <img src="images/cvace-logo-removebg-preview.png" alt="Castro Valley Adult & Career Education">
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="about.html">About</a>
+      <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <button><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- HERO -->
+<section class="hero">
+  <img src="images/cvace.jpg" class="hero-bg-img" alt="CVACE Building"/>
+  <div class="hero-overlay"></div>
 </section>
 
-<!-- MAIN CONTENT -->
-
- <!-- About CVACE - Left -->
-   <section class="about-section">
-    <div class="about-text">
-      <h2>About CVACE</h2>
-      <p>Castro Valley Adult & Career Education (CVACE) offers a robust Medical Academy that prepares adults for careers in the healthcare field through a variety of focused training programs. Our Medical Academy includes hands-on and hybrid pathways such as the Clinical Medical Assistant program, where students learn essential clinical skills—from taking vital signs and drawing blood to using electronic health records—and prepare for state or national certification exams with the possibility of an externship for real-world experience.</p>
-      <a href="#">About CVACE</a>
+  <!-- ── TICKER ── -->
+  <div class="ticker-wrap">
+    <div class="ticker-inner">
+      <span>ABOUT CVACE</span><span>•</span>
+      <span>ABOUT CVACE</span><span>•</span>
+      <span>ABOUT CVACE</span><span>•</span>
+      <span>ABOUT CVACE</span><span>•</span>
+      <span>ABOUT CVACE</span><span>•</span>
+      <span>ABOUT CVACE</span><span>•</span>
+      <span>ABOUT CVACE</span><span>•</span>
+      <span>ABOUT CVACE</span><span>•</span>
+      <span>ABOUT CVACE</span><span>•</span>
+      <span>ABOUT CVACE</span><span>•</span>
+      <span>ABOUT CVACE</span><span>•</span>
+      <span>ABOUT CVACE</span>
     </div>
-
-  <!-- Right Carousel with the 2 videos-->
-    <div class="about-carousel">
-        <div class="carousel">
-            <div class="carousel-track">
-
-    <div class="slide">
-      <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" 
-        frameborder="0" allowfullscreen></iframe>
-    </div>
-
-    <div class="slide">
-      <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" 
-        frameborder="0" allowfullscreen></iframe>
-    </div>
-
   </div>
-
-  <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-  <button class="next" onclick="moveSlide(1)">&#10095;</button>
+ 
+<!-- ABOUT SECTION -->
+<section class="about-section">
+  <h4>About Castro Valley Adult and Career Education's</h4>
+  <h1>Medical Academy</h1>
+ 
+  <!-- Block 1: Text left, image right -->
+  <div class="about-block">
+    <div>
+      <p>
+        Castro Valley Adult and Career Education (CVACE) is a cornerstone of workforce development in the East Bay, empowering adult learners with the skills, credentials, and confidence to launch and advance meaningful careers. Founded on the belief that education should be accessible to everyone—regardless of age or background—CVACE serves hundreds of students each year through a wide range of career-technical programs designed in close partnership with local employers and industry leaders.
+        <br><br>
+        Our Medical Academy stands at the heart of what we do. Through hands-on and hybrid learning pathways, we prepare adults for in-demand roles across the healthcare industry. Programs such as the Clinical Medical Assistant, Phlebotomy Technician, and Community Health Worker tracks combine rigorous classroom instruction with real-world clinical experience, ensuring graduates are job-ready from day one. Our state-of-the-art training facilities replicate authentic healthcare environments, giving students the practical exposure they need to thrive.
+      </p>
+    </div>
+    <img
+      src="images/cvace-ma-graduate.jpg"
+      alt="CVACE Medical Assistant Graduate"
+      class="about-inline-img"
+    />
+  </div>
+ 
+  <!-- Block 2: Image left, text right -->
+  <div class="about-block reverse">
+    <div>
+      <p>
+        At CVACE, we understand that our students often balance work, family, and other responsibilities alongside their education. That is why our programs are offered in flexible formats—including evening, weekend, and online options—so that pursuing a new career never means putting your life on hold. Our dedicated advisors work one-on-one with each student to map out a personalized pathway to certification, employment, and long-term career growth.
+        <br><br>
+        Beyond the classroom, CVACE connects students directly to the regional healthcare job market through employer partnerships, career fairs, and externship placements at leading medical facilities throughout Alameda County and the greater Bay Area. Whether you are seeking your first healthcare role, returning to the workforce, or looking to earn a new certification to advance your career, CVACE provides the tools, expertise, and community support you need to succeed. Our instructors bring real-world industry experience into every session, and our graduates consistently go on to build rewarding careers in clinics, hospitals, and community health organizations across the region.
+      </p>
+    </div>
+    <img
+      src="images/cvace-partners.jpg"
+      alt="CVACE Community Partners"
+      class="about-inline-img"
+    />
+  </div>
+</section>
+ 
+<!-- THUMBNAIL GALLERY -->
+<section class="gallery-section">
+  <br><br><h1 style="text-align: center;"> Our Medical Academy Programs</h2>
+  <h4 style="text-align: center; font-weight: 100;"> Discover your next career in the healthcare industry through one of our 6 accredited programs</h4><br>
+  <div class="gallery-grid">
+ 
+    <div class="gallery-thumb" onclick="openLightbox('MA', 'images/medical-assistant-program.jpg')">
+      <img src="images/medical-assistant-program.jpg" alt="Medical Assistant Program"/>
+      <div class="gallery-overlay"><h3>Medical Assistant Program</h3></div>
+    </div>
+ 
+    <div class="gallery-thumb" onclick="openLightbox('AMA', 'images/administrative-medical-assistant-program.jpg')">
+      <img src="images/administrative-medical-assistant-program.jpg" alt="Administrative Medical Assistant Program"/>
+      <div class="gallery-overlay"><h3>Administrative Medical Assistant Program</h3></div>
+    </div>
+ 
+    <div class="gallery-thumb" onclick="openLightbox('CHW', 'images/community-health-worker-program.jpg')">
+      <img src="images/community-health-worker-program.jpg" alt="Community Health Worker Program"/>
+      <div class="gallery-overlay"><h3>Community Health Worker Program</h3></div>
+    </div>
+ 
+    <div class="gallery-thumb" onclick="openLightbox('Phlebotomy', 'images/phlebotomy-program.jpg')">
+      <img src="images/phlebotomy-program.jpg" alt="Phlebotomy Program"/>
+      <div class="gallery-overlay"><h3>Phlebotomy Program</h3></div>
+    </div>
+ 
+    <div class="gallery-thumb" onclick="openLightbox('EKG', 'images/ekg-program.jpg')">
+      <img src="images/ekg-program.jpg" alt="EKG Program"/>
+      <div class="gallery-overlay"><h3>EKG Technician Program</h3></div>
+    </div>
+ 
+    <div class="gallery-thumb" onclick="openLightbox('SPT', 'images/sterile-processing-technician-program.jpg')">
+      <img src="images/sterile-processing-technician-program.jpg" alt="Sterile Processing Technician Program"/>
+      <div class="gallery-overlay"><h3>Sterile Processing Technician Program</h3></div>
+    </div>
+ 
+  </div>
+</section>
+ 
+ 
+ 
+<!-- ── FOOTER ── -->
+<footer class="green-footer" id="contact">
+  <div class="footer-inner">
+ 
+    <!-- Logo + social -->
+    <div class="footer-col-logo">
+      <img src="images/cvace-logo-removebg-preview.png" alt="Castro Valley Adult & Career Education">
+      <div class="footer-social">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+      </div>
+    </div>
+ 
+    <!-- Copyright + legal -->
+    <div class="footer-col-copy">
+      <p>© 2026 Castro Valley Adult & Career Education.<br>All Rights Reserved.</p>
+      <br>
+      <p>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms of Service</a> |
+        <a href="#">Accessibility</a>
+      </p>
+    </div>
+ 
+    <div class="footer-right-group"></div>
+ 
+    <!-- Quick links -->
+    <div class="footer-col-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="find-jobs.html">Find Jobs</a></li>
+        <li><a href="find-employers.html">Find Employers</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+ 
+    <!-- Contact info -->
+    <div class="footer-col-contact">
+      <h4>Contact</h4>
+        <p>510-886-1000</p>
+        <p><a href="mailto:info@cv.k12.ca.us">info@cv.k12.ca.us</a></p>
+      <div class="footer-cart">
+        <i class="fa fa-shopping-cart"></i>
+      </div>
+    </div>
+  </div>
+</footer>
+ 
+<!-- LIGHTBOX -->
+<div class="lightbox-backdrop" id="lightbox" onclick="closeLightboxOutside(event)">
+  <div class="lightbox-box" id="lightbox-box">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <div class="lb-img-wrapper">
+      <img id="lb-img" src="" alt=""/>
+      <div class="lb-overlay-text">
+        <h3 id="lb-title"></h3>
+      </div>
+    </div>
+  </div>
 </div>
-
-<section>
-
+ 
 <script>
-    let current = 0;
-    const total = 2; // number of slides
-
-    function moveSlide(direction) {
-    current = (current + direction + total) % total;
-    document.querySelector('.carousel-track').style.transform 
-        = `translateX(-${current * 100}%)`;
-}
+  const programs = {
+    MA:         { title: "Medical Assistant Program" },
+    AMA:        { title: "Administrative Medical Assistant Program" },
+    CHW:        { title: "Community Health Worker Program" },
+    EKG:        { title: "EKG Technician Program" },
+    Phlebotomy: { title: "Phlebotomy Program" },
+    SPT:        { title: "Sterile Processing Technician Program" }
+  };
+ 
+  function openLightbox(key, imgSrc) {
+    const p = programs[key];
+    document.getElementById('lb-img').src = imgSrc;
+    document.getElementById('lb-img').alt = p.title;
+    document.getElementById('lb-title').textContent = p.title;
+    document.getElementById('lightbox').classList.add('active');
+  }
+ 
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+ 
+  function closeLightboxOutside(e) {
+    if (e.target.id === 'lightbox') closeLightbox();
+  }
+ 
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+ 
+ 
 </script>
-<body>
-<html>
+ 
+</body>
+</html>

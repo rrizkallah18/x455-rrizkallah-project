@@ -3,309 +3,551 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Find Jobs – CV Adult & Career Education</title>
+  <title>Find Jobs</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=stat_minus_1" />
+  <link rel="stylesheet" href="styles.css" type="text/css">
 
-  <style>
- 
-    /* ── PAGE-SPECIFIC STYLES ── */
-    .page-wrap { padding-top: 80px; }
- 
-    /* Navbar bg on scroll */
-    .navbar-inner.scrolled { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
- 
+<style>
     /* HERO */
     .hero {
-      position: relative; height: 400px; overflow: hidden;
-      background: #f5c6cb; display: flex; align-items: flex-end;
+      position: relative;
+      height: 700px;
+      overflow: hidden;
     }
     .hero-img {
-      position: absolute; right: 0; top: 0;
-      height: 100%; width: 62%;
-      object-fit: cover; object-position: top center;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
     }
-    .hero::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(90deg, #f5c6cb 30%, transparent 65%);
-      pointer-events: none;
+    .hero-copy {
+      position: absolute;
+      z-index: 2;
+      top: 50%; left: 56px;
+      transform: translateY(-50%);
     }
-    .hero-copy { position: relative; z-index: 2; padding: 0 56px 52px; }
     .hero-copy h1 {
-      font-size: clamp(32px, 4.5vw, 50px); font-weight: 700;
-      color: #1e2d3d; margin: 0 0 12px;
+      font-size: clamp(60px, 4.5vw, 85px);
+      font-weight: 700;
+      color: #1e2d3d;
+      margin: 0 0 12px;
     }
+
     .hero-copy p {
-      font-size: 15px; color: #1e2d3d; opacity: .8;
-      max-width: 250px; line-height: 1.55; margin: 0;
+      font-size: 20px;
+      color: #1e2d3d;
+      opacity: .8;
+      max-width: 380px;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+/* FIND JOBS BAR */
+    .ticker-wrap {
+      background: #1e3244;
+      overflow: hidden;
+      padding: 10px 0;
     }
  
+    .ticker-inner {
+      display: flex;
+      gap: 30px;
+      white-space: nowrap;
+    }
+ 
+    .ticker-inner span {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+
     /* FILTERS */
     .filters-bar {
-      background: #fff; border-bottom: 1px solid #dce4ec;
-      padding: 20px 40px 16px;
+      background: #fff;
+      padding: 40px 24px 0;
     }
+
     .job-search-wrap {
-      display: flex; align-items: center; gap: 10px;
-      border: 1.5px solid #dce4ec; border-radius: 40px;
-      padding: 10px 20px; max-width: 820px; margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1.5px solid #dce4ec;
+      border-radius: 40px;
+      padding: 10px 10px;
+      max-width: 1275px;
+      margin: 20px auto 40px;
       transition: border-color .2s, box-shadow .2s;
     }
+
     .job-search-wrap:focus-within {
-      border-color: #3a7ca5; box-shadow: 0 0 0 3px rgba(58,124,165,.12);
+      border-color: #3a7ca5;
+      box-shadow: 0 0 0 3px rgba(58,124,165,.12);
     }
+
     .job-search-wrap input {
-      flex: 1; border: none; outline: none;
-      font-family: "Poppins", sans-serif; font-size: 13.5px;
-      color: #1e2d3d; background: transparent;
+      flex: 1;
+      border: none;
+      outline: none;
+      font-family: "Poppins", sans-serif;
+      font-size: 13.5px;
+      color: #1e3244;
+      background: transparent;
     }
-    .job-search-wrap input::placeholder { color: #8a98a8; }
-    .job-search-wrap i { color: #8a98a8; font-size: 14px; }
- 
-    .filter-dropdowns { display: flex; gap: 10px; }
-    .filter-btn {
-      display: flex; align-items: center; gap: 6px;
-      border: 1.5px solid #dce4ec; border-radius: 24px; padding: 8px 16px;
-      font-family: "Poppins", sans-serif; font-size: 13px; font-weight: 500;
-      color: #1e2d3d; background: #fff; cursor: pointer;
-      transition: border-color .2s, background .2s;
-    }
-    .filter-btn:hover { border-color: #3a7ca5; background: #e8f2f9; }
-    .filter-btn i { color: #8a98a8; font-size: 11px; }
- 
+
+    .job-search-wrap i { 
+      color: #8a98a8; 
+      font-size: 14px; }
+
     /* TABLE */
-    .table-section { max-width: 960px; margin: 36px auto 60px; padding: 0 24px; }
- 
+    .table-section {
+      max-width: 1300px;
+      margin: 20px auto 120px;
+      padding: 0 24px;
+    }
+
     table {
-      width: 100%; border-collapse: collapse;
-      border-radius: 10px; overflow: hidden;
-      box-shadow: 0 2px 16px rgba(30,45,61,.08); background: #fff;
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(30,45,61,.08);
+      background: #fff;
     }
-    thead tr { background: #1e2d3d; color: #fff; }
+
+    thead tr { 
+      background: #698DA2; 
+      color: #fff; 
+    }
+
     thead th {
-      padding: 14px 16px; text-align: left;
-      font-size: 13px; font-weight: 500; letter-spacing: .04em; white-space: nowrap;
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .05em;
+      white-space: nowrap;
     }
-    tbody tr { border-bottom: 1px solid #dce4ec; transition: background .15s; }
-    tbody tr:last-child { border-bottom: none; }
-    tbody tr:hover { background: #e8f2f9; }
-    tbody td { padding: 16px; font-size: 14px; vertical-align: middle; }
- 
-    .td-title { font-weight: 600; line-height: 1.35; }
-    .td-company { color: #6b7a8d; font-size: 13px; }
-    .td-wage { font-weight: 500; }
-    .td-date { color: #6b7a8d; font-size: 13px; white-space: nowrap; }
- 
+
+    .td-title { 
+      font-weight: 600px; 
+      line-height: 1.35; 
+    }
+
+    tbody tr { 
+      border-bottom: 1px solid #dce4ec; 
+      transition: background .15s; }
+
+    tbody tr:last-child { 
+      border-bottom: none; 
+    }
+
+    tbody tr:hover { 
+      background: #e8f2f9; 
+    }
+
+    tbody td { 
+      padding: 16px; 
+      font-size: 14px; 
+      font-weight: 400px;
+      vertical-align: middle; 
+    }
+
     .badge {
-      display: inline-block; padding: 4px 12px; border-radius: 20px;
-      font-size: 12px; font-weight: 600; white-space: nowrap;
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      white-space: nowrap;
     }
-    .badge-full { background: #d4ecd4; color: #2e7d32; }
-    .badge-part { background: #fff3cd; color: #7a5c00; }
-    .badge-temp { background: #fde0d0; color: #9b4218; }
- 
+
+    .badge-full {
+       background: #d4ecd4; 
+       color: #2e7d32; 
+      }
+
+    .badge-part { 
+      background: #fff3cd; 
+      color: #7a5c00; }
+
+    .badge-temp { 
+      background: #fde0d0; 
+      color: #9b4218; }
+
+    .badge-oncall { 
+      background: #ecbcf0; 
+      color: #8c4ca3; }
+
     .btn-apply {
-      display: inline-block; padding: 7px 18px;
-      background: #3a7ca5; color: #fff; border: none; border-radius: 20px;
-      font-family: "Poppins", sans-serif; font-size: 13px; font-weight: 600;
-      cursor: pointer; text-decoration: none; white-space: nowrap;
+      display: inline-block, center;
+      padding: 7px 18px;
+      background: #96afba;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-family: "Poppins", sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
       transition: background .2s, transform .1s;
     }
-    .btn-apply:hover { background: #2e6a8e; transform: translateY(-1px); }
-    .btn-apply:active { transform: translateY(0); }
-  </style>
-</head>
+    
+    .btn-apply:hover { 
+      background: #2e6a8e; 
+      transform: translateY(-1px); 
+    }
+
+    .btn-apply:active { 
+      transform: translateY(0); 
+    }
+
+    /* SORTABLE HEADERS */
+
+    th.sortable {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    th.sortable:hover { 
+      background: #2e3d4d; 
+    }
+
+    .th-inner { 
+      display: flex; 
+      align-items: center; gap: 5px; 
+    }
+    
+    .material-symbols-outlined { 
+      font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24
+    }
+</style>
+</head>   
+
 <body>
- 
-<!-- NAVBAR -->
-<nav id="mynavbar">
-  <div class="navbar-inner" id="navbarInner">
+
+<!-- ── NAVBAR ── -->
+  <div id="myNavbar">
+    <div class="navbar-inner">
+
+  <!-- Left links -->
     <div class="nav-left">
-      <a href="#">Find Jobs</a>
-      <a href="#">Find Employers</a>
-      <a href="#">Resources</a>
+      <a href="find-jobs.html">Find Jobs</a>
+      <a href="find-employers.html">Find Employers</a>
+      <a href="resources.html">Resources</a>
     </div>
+        
+  <!-- Centered logo -->
     <div class="nav-center">
-      <!-- Replace with your actual logo path -->
-      <a href="#"><img src="logo.png" alt="CV Adult & Career Education"></a>
+      <a href="index.html">
+      <img src="images/cvace-logo-removebg-preview.png" alt="Castro Valley Adult & Career Education">
+      </a>
     </div>
+        
+  <!-- Right links + search -->
     <div class="nav-right">
-      <a href="#">About</a>
+      <a href=about.html>About</a>
       <div class="search-box">
-        <input type="text" placeholder="Search...">
-        <button><i class="fas fa-search"></i></button>
-      </div>
+      <input type="text" placeholder="Search...">
+      <button><i class="fa fa-search"></i></button></div>
     </div>
   </div>
-</nav>
- 
-<div class="page-wrap">
- 
+
+
   <!-- HERO -->
   <section class="hero">
-    <!-- Replace src with your actual photo -->
-    <img class="hero-img" src="hero-nurse.jpg" alt="Healthcare professional">
+    <img class="hero-img" src="images/pink-medical-assistant.jpg" alt="Medical Assistant">
     <div class="hero-copy">
       <h1>Find Jobs</h1>
       <p>Explore allied health positions around the San Francisco Bay Area</p>
     </div>
   </section>
- 
-  <!-- FILTERS -->
+
+<!-- ── TICKER ── -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+    <span>FIND JOBS</span>
+    <span>•</span>
+  </div>
+</div>
+
+
+
+  <!-- SEARCH -->
   <div class="filters-bar">
     <div class="job-search-wrap">
       <i class="fas fa-search"></i>
-      <input type="text" placeholder="Search for job title or keyword…">
-    </div>
-    <div class="filter-dropdowns">
-      <button class="filter-btn">City <i class="fas fa-chevron-down"></i></button>
-      <button class="filter-btn">Company <i class="fas fa-chevron-down"></i></button>
-      <button class="filter-btn">Job Type <i class="fas fa-chevron-down"></i></button>
+      <input type="text" id="jobSearch" placeholder="Search for job title or keyword…">
     </div>
   </div>
- 
+
   <!-- JOB TABLE -->
   <section class="table-section">
     <table>
       <thead>
         <tr>
-          <th>Job Title</th>
-          <th>Company</th>
-          <th>Specialty</th>
-          <th>City</th>
-          <th>Job Type</th>
-          <th>Hourly Wage</th>
-          <th>Posted</th>
-          <th></th>
+          <th class="sortable" data-col="0">
+            <div class="th-inner">Job Title <span class="sort-icon"></span></div>
+          </th>
+          <th class="sortable" data-col="1">
+            <div class="th-inner">Company <span class="sort-icon"></span></div>
+          </th>
+          <th class="sortable" data-col="2">
+            <div class="th-inner">Department <span class="sort-icon"></span></div>
+          </th>
+          <th class="sortable" data-col="3">
+            <div class="th-inner">City <span class="sort-icon"></span></div>
+          </th>
+          <th class="sortable" data-col="4">
+            <div class="th-inner">Job Type <span class="sort-icon"></span></div>
+          </th>
+          <th class="sortable" data-col="5">
+            <div class="th-inner">Hourly Wage <span class="sort-icon"></span></div>
+          </th>
+          <th class="sortable" data-col="6">
+            <div class="th-inner">Date Posted <span class="sort-icon"></span></div>
+          </th>
+          <th>Link to Apply</th>
         </tr>
       </thead>
-      <tbody>
+
+      <tbody id="jobBody">
+
         <tr>
-          <td class="td-title">Medical Assistant</td>
-          <td class="td-company">Kaiser Permanente</td>
-          <td>Cardiology</td>
-          <td>Oakland</td>
+          <td class="td-title">Float Medical Assistant</td>
+          <td class="td-company">Washington Health</td>
+          <td>Urgent Care</td>
+          <td>Fremont</td>
           <td><span class="badge badge-full">Full Time</span></td>
-          <td class="td-wage">$32.00</td>
-          <td class="td-date">March 2, 2026</td>
-          <td><a href="#" class="btn-apply">Apply</a></td>
+          <td class="td-wage">$29.00-$36.00</td>
+          <td class="td-date">4/6/2026</td>
+          <td><a href="https://washingtontownshipmedicalfoundation.applytojob.com/apply/jobs/details/q9yYbJyz0T?&" class="btn-apply">Apply</a></td>
         </tr>
+
         <tr>
           <td class="td-title">Medical Assistant II</td>
-          <td class="td-company">Sutter Health</td>
-          <td>Dermatology</td>
-          <td>Dublin</td>
-          <td><span class="badge badge-part">Part Time</span></td>
-          <td class="td-wage">$34.00</td>
-          <td class="td-date">March 1, 2026</td>
-          <td><a href="#" class="btn-apply">Apply</a></td>
+          <td class="td-company">La Clinica de la Raza</td>
+          <td>San Antonio Health Center</td>
+          <td>Oakland</td>
+          <td><span class="badge badge-full">Full Time</span></td>
+          <td class="td-wage">$25.00-$31.86</td>
+          <td class="td-date">4/1/2026</td>
+          <td><a href="https://laclinica.hrmdirect.com/employment/job-opening.php?req=3645387&req_loc=1247665&&cust_sort1=128842&cust_sort2=-1&#job" class="btn-apply">Apply</a></td>
         </tr>
+
         <tr>
-          <td class="td-title">Medical Assistant</td>
-          <td class="td-company">Bass Medical Group</td>
-          <td>Cardiology</td>
-          <td>Walnut Creek</td>
-          <td><span class="badge badge-temp">Temporary</span></td>
-          <td class="td-wage">$32.00</td>
-          <td class="td-date">February 23, 2026</td>
-          <td><a href="#" class="btn-apply">Apply</a></td>
-        </tr>
-        <tr>
-          <td class="td-title">Patient Advocate</td>
+          <td class="td-title">Bilingual Medical Assistant</td>
           <td class="td-company">Asian Health Services</td>
           <td>Community Health</td>
           <td>Oakland</td>
           <td><span class="badge badge-full">Full Time</span></td>
-          <td class="td-wage">$28.00</td>
-          <td class="td-date">February 15, 2026</td>
-          <td><a href="#" class="btn-apply">Apply</a></td>
+          <td class="td-wage">$31.37-$32.67</td>
+          <td class="td-date">3/25/2026</td>
+          <td><a href="https://jobs.lever.co/ahschc/b8b8aea8-0065-438b-8567-8abdd86eaa62" class="btn-apply">Apply</a></td>
         </tr>
+
         <tr>
           <td class="td-title">Medical Assistant</td>
           <td class="td-company">UCSF Health</td>
-          <td>OB/GYN</td>
+          <td>Hepatology</td>
           <td>San Francisco</td>
           <td><span class="badge badge-temp">Temporary</span></td>
-          <td class="td-wage">$32.00</td>
-          <td class="td-date">February 14, 2026</td>
-          <td><a href="#" class="btn-apply">Apply</a></td>
+          <td class="td-wage">$34.50-$43.06</td>
+          <td class="td-date">3/25/2026</td>
+          <td><a href="https://iazuqy.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/CONV_88180BR/?keyword=medical+assistant&mode=location" class="btn-apply">Apply</a></td>
         </tr>
-        <tr>
-          <td class="td-title">Front Desk Receptionist</td>
-          <td class="td-company">Concentra</td>
-          <td>Urgent Care</td>
-          <td>Tracy</td>
-          <td><span class="badge badge-full">Full Time</span></td>
-          <td class="td-wage">$22.00</td>
-          <td class="td-date">February 7, 2026</td>
-          <td><a href="#" class="btn-apply">Apply</a></td>
-        </tr>
+
         <tr>
           <td class="td-title">Medical Assistant</td>
           <td class="td-company">Concentra</td>
           <td>Urgent Care</td>
-          <td>Tracy</td>
-          <td><span class="badge badge-part">Part Time</span></td>
-          <td class="td-wage">$22.00</td>
-          <td class="td-date">February 7, 2026</td>
-          <td><a href="#" class="btn-apply">Apply</a></td>
+          <td>Sunnyvale</td>
+          <td><span class="badge badge-oncall">On-Call</span></td>
+          <td class="td-wage">$23.79-$30.93 </td>
+          <td class="td-date">3/27/2026</td>
+          <td><a href="https://www.concentra.com/careers/job-search/ca/sunnyvale/medical-assistant/362189/" class="btn-apply">Apply</a></td>
         </tr>
+
+        <tr>
+          <td class="td-title">Medical Receptionist</td>
+          <td class="td-company">Golden State Dermatology</td>
+          <td>Dermatology</td>
+          <td>Berkeley</td>
+          <td><span class="badge badge-part">Part Time</span></td>
+          <td class="td-wage">$21.00-$27.00 </td>
+          <td class="td-date">3/15/2026</td>
+          <td><a href="https://www.paycomonline.net/v4/ats/web.php/portal/67A21AE989FF003B1D4A5C0A9B16A9BB/jobs/401812" class="btn-apply">Apply</a></td>
+        </tr>
+
+
+
+
+
       </tbody>
     </table>
   </section>
- 
+
 </div><!-- end page-wrap -->
- 
-<!-- FOOTER -->
-<footer>
+
+<!-- ── FOOTER ── -->
+<footer class="green-footer"; id="contact">
   <div class="footer-inner">
+ 
+    <!-- Logo + social -->
     <div class="footer-col-logo">
-      <!-- Replace with your actual logo path -->
-      <img src="logo-white.png" alt="CV Adult & Career Education">
+      <img src="images/cvace-logo-removebg-preview.png" alt="Castro Valley Adult & Career Education">
       <div class="footer-social">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
       </div>
     </div>
  
+    <!-- Copyright + legal -->
     <div class="footer-col-copy">
-      © 2026 Castro Valley Adult &amp; Career Education.<br>
-      All Rights Reserved.<br><br>
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Terms of Service</a> |
-      <a href="#">Accessibility</a>
+      <p>© 2026 Castro Valley Adult & Career Education.<br>All Rights Reserved.</p>
+      <br>
+      <p>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms of Service</a> |
+        <a href="#">Accessibility</a>
+      </p>
     </div>
+
+    <div class="footer-right-group"></div>
  
+    <!-- Quick links -->
     <div class="footer-col-links">
       <h4>Quick Links</h4>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Find Jobs</a></li>
-        <li><a href="#">Find Employers</a></li>
-        <li><a href="#">Resources</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="find-jobs.html">Find Jobs</a></li>
+        <li><a href="find-employers.html">Find Employers</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="about.html">About</a></li>
       </ul>
     </div>
  
-    <div class="footer-right-group">
-      <div class="footer-col-contact">
-        <h4>Contact</h4>
+    <!-- Contact info -->
+    <div class="footer-col-contact">
+      <h4>Contact</h4>
         <p>510-886-1000</p>
-        <p><a href="mailto:cvaceinfo@cv.k12.ca.us">cvaceinfo@cv.k12.ca.us</a></p>
+        <p><a href="mailto:info@cv.k12.ca.us">info@cv.k12.ca.us</a></p>
+      <div class="footer-cart">
+        <i class="fa fa-shopping-cart"></i>
       </div>
     </div>
   </div>
+  
 </footer>
- 
+
 <script>
   const navbarInner = document.getElementById('navbarInner');
   window.addEventListener('scroll', () => {
     navbarInner.classList.toggle('scrolled', window.scrollY > 10);
   });
+
+  let sortCol = null;
+  let sortDir = 1;
+
+  function getCellText(row, col) {
+    const td = row.cells[col];
+    const badge = td.querySelector('.badge');
+    return (badge ? badge.textContent : td.textContent).trim().toLowerCase();
+  }
+
+  function sortTable(col) {
+    if (sortCol === col) {
+      sortDir *= -1;
+    } else {
+      sortCol = col;
+      sortDir = 1;
+    }
+
+    document.querySelectorAll('th.sortable').forEach(th => {
+      th.classList.remove('sort-asc', 'sort-desc');
+      th.querySelector('.sort-icon').textContent = '↕';
+    });
+
+    const activeTh = document.querySelector(`th.sortable[data-col="${col}"]`);
+    if (sortDir === 1) {
+      activeTh.classList.add('sort-asc');
+      activeTh.querySelector('.sort-icon').textContent = '↑';
+    } else {
+      activeTh.classList.add('sort-desc');
+      activeTh.querySelector('.sort-icon').textContent = '↓';
+    }
+
+    const tbody = document.getElementById('jobBody');
+    const rows = [...tbody.querySelectorAll('tr')];
+    rows.sort((a, b) => {
+      const textA = getCellText(a, col);
+      const textB = getCellText(b, col);
+      return textA < textB ? -sortDir : textA > textB ? sortDir : 0;
+    });
+    rows.forEach(r => tbody.appendChild(r));
+  }
+
+  document.querySelectorAll('th.sortable').forEach(th => {
+    th.addEventListener('click', () => {
+      sortTable(parseInt(th.dataset.col));
+    });
+  });
+
+  // Search
+  document.getElementById('jobSearch').addEventListener('input', function() {
+    const query = this.value.toLowerCase();
+    document.querySelectorAll('#jobBody tr').forEach(r => {
+      const text = r.textContent.toLowerCase();
+      r.classList.toggle('hidden', !text.includes(query));
+    });
+  });
 </script>
- 
+
 </body>
 </html>

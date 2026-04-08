@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resources: Resumes</title>
+  <link rel="stylesheet" href="styles.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap">
+  
+  <style>
+ 
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+ 
+    .hero img.hero-bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+ 
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+ 
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 5.5%;
+      transform: translateY(-50%);
+      z-index: 2;
+      color: #fff;
+      max-width: 500px;
+      text-align: left;
+    }
+ 
+    .hero-content h1 {
+      margin: 0;
+      font-size: 75px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+ 
+    .hero-content h2 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 200;
+      line-height: 1.2;
+    }
+ 
+    .hero-content p {
+      margin: 0 0 4px;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      max-width: 400px;
+    }
+ 
+    /* ── TICKER ── */
+    .ticker-wrap {
+      background: #723f3e;
+      overflow: hidden;
+      padding: 10px 0;
+    }
+ 
+    .ticker-inner {
+      display: flex;
+      gap: 30px;
+      white-space: nowrap;
+    }
+ 
+    .ticker-inner span {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: #fff;
+      text-transform: uppercase;
+    }
+ 
+    /* ── TWO-COLUMN LAYOUT ── */
+    .accordion-section {
+      display: flex;
+      align-items: flex-start;
+      max-width: 1350px;
+      margin: 40px auto 60px;
+      padding: 0 24px;
+      gap: 50px;
+    }
+ 
+    .accordion-intro {
+      width: 300px;
+      flex-shrink: 0;
+      background: #f2f2f2;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      line-height: 1.7;
+      top: 80px;
+    }
+ 
+    /* ── ACCORDION WRAPPER ── */
+    .accordion-wrapper {
+      flex: 1;
+      margin: 0;
+      padding: 0;
+    }
+ 
+    .accordion-item {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+ 
+    /* ── ACCORDION HEADER ── */
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      cursor: pointer;
+      background: #fff;
+      transition: background 0.2s;
+      user-select: none;
+    }
+    .accordion-header:hover { background: #f9f9f9; }
+ 
+    .acc-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #6aabaa;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      flex-shrink: 0;
+      margin-right: 16px;
+    }
+ 
+    .acc-title-group { flex: 1; }
+    .acc-title { font-size: 0.95rem; font-weight: 600;}
+    .acc-subtitle { font-size: 0.8rem; margin-top: 2px; }
+ 
+    .acc-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-right: 14px;
+      white-space: nowrap;
+    }
+    .badge-required     { background: #e8f4f4; color: #3a8a89; }
+    .badge-recommended  { background: #f0f4e8; color: #6a8a3a; }
+ 
+    .acc-chevron {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1.5px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s;
+      flex-shrink: 0;
+    }
+ 
+    .acc-chevron svg { transition: transform 0.3s; }
+    .accordion-item.open .acc-chevron { border-color: #6aabaa; }
+    .accordion-item.open .acc-chevron svg { transform: rotate(180deg); }
+ 
+    /* ── ACCORDION BODY ── */
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      background: #fff;
+    }
+    .accordion-item.open .accordion-body { max-height: 600px; }
+ 
+    .acc-content-simple {
+    padding: 5px 25px 25px 25px;
+    }
+ 
+    .acc-content-simple p {
+    font-size: 0.88rem;
+    color: #444;
+    line-height: 1.7;
+    margin: 0 0 10px;
+    }
+ 
+    .acc-description {
+      font-size: 0.88rem;
+      color: #444;
+      line-height: 1.7;
+      grid-column: 1 / -1;
+    }
+ 
+    /* ── EXAMPLE BOX ── */
+    .acc-example {
+      background: #f7f7f7;
+      border-radius: 6px;
+      padding: 14px 16px;
+    }
+    .acc-example .ex-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .acc-example .ex-name  { font-size: 1rem; font-weight: 700; color: #222; }
+    .acc-example .ex-title { font-size: 0.82rem; color: #555; }
+    .acc-example .ex-detail { font-size: 0.78rem; color: #777; margin-top: 4px; }
+ 
+    /* ── INCLUDE / LEAVE OFF ── */
+    .acc-lists { display: flex; gap: 16px; }
+ 
+    .acc-list-box {
+      flex: 1;
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .include-box   { background: #e8f4f4; }
+    .leaveoff-box  { background: #fdf2ee; }
+ 
+    .acc-list-box .list-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+    .include-box  .list-title { color: #3a8a89; }
+    .leaveoff-box .list-title { color: #c0623a; }
+ 
+    .acc-list-box ul { list-style: none; padding: 0; margin: 0; }
+    .acc-list-box ul li {
+      font-size: 0.8rem;
+      color: #444;
+      padding: 2px 0 2px 14px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .include-box  ul li::before { content: "•"; position: absolute; left: 0; color: #3a8a89; }
+    .leaveoff-box ul li::before { content: "•"; position: absolute; left: 0; color: #c0623a; }
+ 
+    /* ── VIDEO SECTION ── */
+    .video-section {
+      background: #6aabaa;
+      padding: 60px 24px;
+    }
+ 
+    .video-section-inner {
+      max-width: 1350px;
+      margin: 0 auto;
+    }
+ 
+    .video-section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+ 
+    .video-section-header h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 10px;
+    }
+ 
+    .video-section-header p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.85);
+      margin: 0;
+    }
+ 
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+ 
+    .video-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+ 
+    .video-card .video-embed {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+    }
+ 
+    .video-card .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+ 
+    .video-card .video-label {
+      padding: 14px 16px;
+    }
+ 
+    .video-card .video-label h3 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #222;
+      margin: 0 0 4px;
+    }
+ 
+    .video-card .video-label p {
+      font-size: 0.78rem;
+      color: #666;
+      margin: 0;
+      line-height: 1.5;
+    }
+ 
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .video-grid { grid-template-columns: 1fr; }
+    }
+ 
+    @media (max-width: 768px) {
+      .accordion-section { flex-direction: column; }
+      .accordion-intro { width: 100%; position: static; }
+      .acc-content { grid-template-columns: 1fr; padding-left: 20px; }
+      .acc-lists { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+ 
+  <!-- ── NAVBAR ── -->
+  <div id="myNavbar">
+    <div class="navbar-inner">
+  
+      <!-- Left links -->
+      <div class="nav-left">
+        <a href="find-jobs.html">Find Jobs</a>
+        <a href="find-employers.html">Find Employers</a>
+        <a href="resources.html">Resources</a>
+      </div>
+  
+      <!-- Centered logo -->
+      <div class="nav-center">
+        <a href="index.html">
+          <img src="images/cvace-logo-removebg-preview.png" alt="Castro Valley Adult & Career Education">
+        </a>
+      </div>
+  
+      <!-- Right links + search -->
+      <div class="nav-right">
+        <a href="about.html">About</a>
+        <div class="search-box">
+          <input type="text" placeholder="Search...">
+          <button><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <img class="hero-bg-img" src="images/computer-laptop.jpg" alt="Typing on Computer">
+    <div class="hero-content">
+      <h2>Resources</h2>
+      <h1>Resumes</h1><br>
+      <p class="pre">New to resume writing? This guide will help you through every section of creating your resume.</p>
+    </div>
+  </div>
+ 
+  <!-- ── TICKER ── -->
+  <div class="ticker-wrap">
+    <div class="ticker-inner">
+      <span>RESUMES</span><span>•</span>
+      <span>RESUMES</span><span>•</span>
+      <span>RESUMES</span><span>•</span>
+      <span>RESUMES</span><span>•</span>
+      <span>RESUMES</span><span>•</span>
+      <span>RESUMES</span><span>•</span>
+      <span>RESUMES</span><span>•</span>
+      <span>RESUMES</span><span>•</span>
+      <span>RESUMES</span><span>•</span>
+      <span>RESUMES</span><span>•</span>
+      <span>RESUMES</span><span>•</span>
+      <span>RESUMES</span>
+    </div>
+  </div>
+ 
+  <!-- ── TWO-COLUMN SECTION ── -->
+  <div class="accordion-section">
+ 
+    <!-- Left intro panel -->
+    <div class="accordion-intro">
+      <h3>How to use this guide:</h3>
+      <p>Click any section to expand it. Each one explains what the section is,
+      what to include (and what not to), and shows a real example from an allied health resume.
+      Start from the top and work your way down.</p>
+    </div>
+ 
+    <!-- Right accordion -->
+    <div class="accordion-wrapper">
+ 
+  <!-- 1. Contact Information -->
+  <div class="accordion-item open">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="acc-num">1</div>
+      <div class="acc-title-group">
+        <div class="acc-title">Contact Information</div>
+        <div class="acc-subtitle">Your name, credentials, and how employers reach you</div>
+      </div>
+      <span class="acc-badge badge-required">Required</span>
+      <div class="acc-chevron">
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+          <path d="M1 1l4 4 4-4" stroke="#6aabaa" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="accordion-body">
+      <div class="acc-content-simple">
+        <p>This is the very top of your resume. It's the first thing the hiring manager sees, so it needs to be clean, correct, and professional. Think of this as your business card.</p>
+        <p><strong>Include:</strong> Your full name, credential, city and state, a professional email, and your phone number.
+            <br> <strong>Leave off:</strong> your full home address, a photo, your age or date of birth, personal emails, and social media profiles.</p>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- 2. Professional Summary -->
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="acc-num">2</div>
+      <div class="acc-title-group">
+        <div class="acc-title">Professional Summary</div>
+        <div class="acc-subtitle">A 2 to 3 sentence snapshot of who you are and your experience</div>
+      </div>
+      <span class="acc-badge badge-recommended">Highly Recommended</span>
+      <div class="acc-chevron">
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+          <path d="M1 1l4 4 4-4" stroke="#999" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="accordion-body">
+      <div class="acc-content-simple">
+        <p>A brief paragraph at the top that tells employers who you are, what you specialize in, and what you bring to the role. Tailor it slightly for each job application.
+            <br><br><strong>Example: </strong>"Compassionate Medical Assistant with 4+ years of experience in outpatient clinical settings. Skilled in phlebotomy, EHR documentation, and patient education."</p>
+        <p><strong>Include:</strong> your years of experience, key clinical skills, career goal or specialty, and a standout quality. 
+            <br><strong>Leave off:</strong> "I" statements, vague filler phrases, salary expectations, and anything longer than 4 to 5 sentences.</p>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- 3. Work Experience -->
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="acc-num">3</div>
+      <div class="acc-title-group">
+        <div class="acc-title">Work Experience</div>
+        <div class="acc-subtitle">Your work experience from the last 10 to 15 years, in reverse order</div>
+      </div>
+      <span class="acc-badge badge-required">Required</span>
+      <div class="acc-chevron">
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+          <path d="M1 1l4 4 4-4" stroke="#999" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="accordion-body">
+      <div class="acc-content-simple">
+        <p>List your jobs starting with the most recent. For each role include your job title, employer, city and state, dates, and 3–5 bullet points describing your responsibilities and accomplishments. For example: <em>Medical Assistant — Valley Health Clinic, Oakland, CA — Jan 2020–Present.</em></p>
+        <p><strong>Include:</strong> job title, employer, location, dates, action verb bullet points, and quantified achievements. <br><strong>Leave off:</strong> reasons for leaving, jobs older than 15 years, paragraph-style descriptions, and supervisor contact info.</p>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- 4. Education -->
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="acc-num">4</div>
+      <div class="acc-title-group">
+        <div class="acc-title">Education</div>
+        <div class="acc-subtitle">Your degrees, diplomas, and training programs</div>
+      </div>
+      <span class="acc-badge badge-required">Required</span>
+      <div class="acc-chevron">
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+          <path d="M1 1l4 4 4-4" stroke="#999" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="accordion-body">
+      <div class="acc-content-simple">
+        <p>List your highest level of education first. Include the school name, degree or certificate earned, and graduation year. You don't need to list your GPA unless it's 3.5 or higher. For example: <em>Certificate in Medical Assisting — Chabot College, Hayward, CA — 2019.</em></p>
+        <p><strong>Include:</strong> degree or certificate name, school name and location, year completed, and relevant coursework if applicable. 
+            <br><strong>Leave off:</strong> high school if you have college, GPA under 3.5, and incomplete programs unless currently enrolled.</p>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- 5. Licenses & Certifications -->
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="acc-num">5</div>
+      <div class="acc-title-group">
+        <div class="acc-title">Licenses and Certifications</div>
+        <div class="acc-subtitle">Your state certifications and professional credentials</div>
+      </div>
+      <span class="acc-badge badge-required">Required</span>
+      <div class="acc-chevron">
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+          <path d="M1 1l4 4 4-4" stroke="#999" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="accordion-body">
+      <div class="acc-content-simple">
+        <p>This section is especially important in allied health. List every current license and certification including the issuing body and expiration date. For example: <em>Certified Medical Assistant (CMA) — AAMA, Exp. 2026 | BLS/CPR — American Red Cross, Exp. 2025.</em></p>
+        <p><strong>Include:</strong> the full credential name and acronym, issuing organization, expiration date, and license number if required. 
+            <br><strong>Leave off:</strong> expired certifications, irrelevant certificates, and online hobby courses.</p>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- 6. Skills -->
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="acc-num">6</div>
+      <div class="acc-title-group">
+        <div class="acc-title">Skills</div>
+        <div class="acc-subtitle">A concise list of your key competencies and skills</div>
+      </div>
+      <span class="acc-badge badge-required">Required</span>
+      <div class="acc-chevron">
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+          <path d="M1 1l4 4 4-4" stroke="#999" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="accordion-body">
+      <div class="acc-content-simple">
+        <p>A scannable list of your top clinical and professional skills. Use keywords from the job description — this helps your resume pass applicant tracking systems (ATS). For example: <em>Phlebotomy • EKG/ECG • Epic EMR • Vital Signs • Patient Education • Bilingual (Spanish/English).</em></p>
+        <p><strong>Include:</strong> clinical and technical skills, software and EMR systems, languages spoken, and a few soft skills. 
+            <br><strong>Leave off:</strong> Skills you can't demonstrate and more than 12 to 15 items total.</p>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+</div><!-- /.accordion-wrapper -->
+</div><!-- /.accordion-section -->
+ 
+  <!-- ── VIDEO SECTION ── -->
+  <div class="video-section">
+    <div class="video-section-inner">
+      <div class="video-section-header">
+        <h2>Watch & Learn</h2>
+        <p>These videos walk you through resume writing tips for applying for jobs in the healthcare industry.</p>
+      </div>
+      <div class="video-grid">
+ 
+        <!-- Video 1 -->
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/aDrG_de-a7o?si=tKhUA6VdeYNoRvAE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="video-label">
+            <h3>Ultimate Healthcare Resume Guide</h3>
+            <p>How to create an outstanding resume for the healthcare industry in just 5 minutes.</p>
+          </div>
+        </div>
+ 
+        <!-- Video 2 -->
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/5x7Qjnv2YUk?si=GGFTdkhyS7HlBuOg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="video-label">
+            <h3>Top Resume Tips for Healthcare Professionals</h3>
+            <p>Find out what to include and not to include on your resume when applying for jobs in healthcare.</p>
+          </div>
+        </div>
+ 
+        <!-- Video 3 -->
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/MFOtAgYCDhA?si=rPgQxMBkoaVlHwRP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>          </div>
+          <div class="video-label">
+            <h3>The Key to Create a Standout Healthcare Resume</h3>
+            <p>Want to kickstart your healthcare career? It all starts with your resume!</p>
+          </div>
+        </div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+<!-- ── FOOTER ── -->
+<footer class="green-footer" id="contact">
+  <div class="footer-inner">
+ 
+    <!-- Logo + social -->
+    <div class="footer-col-logo">
+      <img src="images/cvace-logo-removebg-preview.png" alt="Castro Valley Adult & Career Education">
+      <div class="footer-social">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+      </div>
+    </div>
+ 
+    <!-- Copyright + legal -->
+    <div class="footer-col-copy">
+      <p>© 2026 Castro Valley Adult & Career Education.<br>All Rights Reserved.</p>
+      <br>
+      <p>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms of Service</a> |
+        <a href="#">Accessibility</a>
+      </p>
+    </div>
+ 
+    <div class="footer-right-group"></div>
+ 
+    <!-- Quick links -->
+    <div class="footer-col-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="find-jobs.html">Find Jobs</a></li>
+        <li><a href="find-employers.html">Find Employers</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+ 
+    <!-- Contact info -->
+    <div class="footer-col-contact">
+      <h4>Contact</h4>
+        <p>510-886-1000</p>
+        <p><a href="mailto:info@cv.k12.ca.us">info@cv.k12.ca.us</a></p>
+      <div class="footer-cart">
+        <i class="fa fa-shopping-cart"></i>
+      </div>
+    </div>
+ 
+  </div>
+</footer>
+ 
+  <script>
+    function toggleAccordion(header) {
+      const item = header.parentElement;
+      const isOpen = item.classList.contains('open');
+ 
+      // Close all items and reset chevron colors
+      document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+      document.querySelectorAll('.acc-chevron svg path').forEach(p => p.setAttribute('stroke', '#999'));
+ 
+      // Open clicked item if it was closed
+      if (!isOpen) {
+        item.classList.add('open');
+        header.querySelector('.acc-chevron svg path').setAttribute('stroke', '#6aabaa');
+      }
+    }
+ 
+    // Set correct chevron color for the initially open item on page load
+    document.querySelectorAll('.accordion-item.open .acc-chevron svg path').forEach(p => {
+      p.setAttribute('stroke', '#6aabaa');
+    });
+  </script>
+ 
+</body>
+</html>

@@ -46,7 +46,7 @@ body {
       text-decoration: none;
       color: #222;
       font-size: 0.9rem;
-      font-weight: 500;
+      font-weight: 500px;
       padding: 6px 10px;
       border-radius: 4px;
     }
@@ -94,7 +94,13 @@ body {
       color: #fff;
       padding: 50px 60px 30px;
     }
- 
+
+    .green-footer {
+      background: #9ba88d;
+      color: #fff;
+      padding: 50px 60px 30px;
+    }
+    
     .footer-inner {
       display: flex;
       gap: 20px;
@@ -127,7 +133,7 @@ body {
       text-decoration: none;
       transition: opacity 0.2s;
     }
- 
+
     .footer-social a:hover { opacity: 0.85; }
  
     .footer-col-copy {
