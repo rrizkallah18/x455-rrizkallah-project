@@ -211,6 +211,20 @@
       transform: translateY(0); 
     }
 
+    @media (max-width: 768px) {
+
+  .table-section {
+    padding: 0 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; 
+  }
+
+  .table-section table {
+    min-width: 680px;
+  }
+
+}
+
     /* SORTABLE HEADERS */
 
     th.sortable {
@@ -233,16 +247,16 @@
 
 @media (max-width: 768px) {
   .hero-content {
-    left: 24px;
-    right: 24px;
+    height: 350;
   }
 
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: clamp(2rem, 8vw, 3.5rem);
   }
 
   .hero-content p {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+    max-width: 100%;
   }
 }
 
