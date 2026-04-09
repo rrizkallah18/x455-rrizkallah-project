@@ -5,6 +5,7 @@ body {
   padding: 0;
 }
 
+
 /* ── NAVBAR ── */
 #mynavbar {
       position: fixed;
@@ -81,6 +82,63 @@ body {
       color: #555;
       background-color: white;
     }
+
+/* Hide hamburger on desktop */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #1e3244;
+  padding: 6px 10px;
+  margin-left: auto; 
+  align-self: center; 
+}
+
+/* Mobile menu hidden by default */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  padding: 12px 20px;
+  gap: 4px;
+  border-top: 1px solid #eee;
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: #222;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  text-align: right;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .nav-left,
+  .nav-right {
+    display: none;
+  }
+
+  .navbar-inner {
+    justify-content: space-between;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-center {
+    width: auto;
+    flex: 1;
+  }
+}
  
     /* ── FOOTER ── */
     footer {

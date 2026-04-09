@@ -343,6 +343,21 @@
       .acc-content { grid-template-columns: 1fr; padding-left: 20px; }
       .acc-lists { flex-direction: column; }
     }
+
+    @media (max-width: 768px) {
+  .hero-content {
+    left: 24px;
+    right: 24px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 0.85rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -375,6 +390,21 @@
       </div>
     </div>
   </div>
+
+<button class="hamburger" id="hamburger" aria-label="Menu">
+    <i class="fa fa-bars"></i>
+  </button>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="find-jobs.html">Find Jobs</a>
+  <a href="find-employers.html">Find Employers</a>
+  <a href="resources.html">Resources</a>
+  <a href="resumes.html">Resumes</a>
+  <a href="about.html">About</a>
+</div>
+
  
   <!-- ── HERO ── -->
   <div class="hero">
@@ -669,21 +699,23 @@
       const item = header.parentElement;
       const isOpen = item.classList.contains('open');
  
-      // Close all items and reset chevron colors
       document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
       document.querySelectorAll('.acc-chevron svg path').forEach(p => p.setAttribute('stroke', '#999'));
  
-      // Open clicked item if it was closed
       if (!isOpen) {
         item.classList.add('open');
         header.querySelector('.acc-chevron svg path').setAttribute('stroke', '#6aabaa');
       }
     }
  
-    // Set correct chevron color for the initially open item on page load
     document.querySelectorAll('.accordion-item.open .acc-chevron svg path').forEach(p => {
       p.setAttribute('stroke', '#6aabaa');
     });
+
+document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+
   </script>
  
 </body>

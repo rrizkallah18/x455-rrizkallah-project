@@ -230,6 +230,23 @@
     .material-symbols-outlined { 
       font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24
     }
+
+@media (max-width: 768px) {
+  .hero-content {
+    left: 24px;
+    right: 24px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 0.85rem;
+  }
+}
+
+
 </style>
 </head>   
 
@@ -261,6 +278,21 @@
       <button><i class="fa fa-search"></i></button></div>
     </div>
   </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+    <i class="fa fa-bars"></i>
+  </button>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="find-jobs.html">Find Jobs</a>
+  <a href="find-employers.html">Find Employers</a>
+  <a href="resources.html">Resources</a>
+  <a href="resumes.html">Resumes</a>
+  <a href="about.html">About</a>
+</div>
+
 
 
   <!-- HERO -->
@@ -548,6 +580,11 @@
       r.classList.toggle('hidden', !text.includes(query));
     });
   });
+
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+
 </script>
 
 </body>
